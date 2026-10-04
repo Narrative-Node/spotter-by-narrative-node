@@ -1,0 +1,32 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "inter",
+        "createdAt": "2026-10-04T18:14:43.986Z",
+        "reason": "Brand commitment: Inter is Narrative Node's UI face, recorded as a user requirement (Navigator DECISIONS.md D-64); Spotter shares the brand."
+      },
+      {
+        "rule": "tiny-text",
+        "value": "*",
+        "files": [
+          "extension/index.html"
+        ],
+        "createdAt": "2026-10-04T18:15:04.704Z",
+        "reason": "Docked Premiere panel at host UI density: 12px body; 11px is the floor, used for secondary meta, count pills and format badges, matching Navigator's documented 11px meta (hosts/uxp/DESIGN.md). Decided by Claude, not user-confirmed."
+      },
+      {
+        "rule": "clipped-overflow-container",
+        "value": "*",
+        "files": [
+          "extension/index.html"
+        ],
+        "createdAt": "2026-10-04T22:37:06.077Z",
+        "reason": "Waveform canvases and tile progress lines are absolutely positioned on purpose and must be clipped to their card; the Navigator bubble is not inside a clipping container (checked in a screenshot). Decided by Claude, not user-confirmed."
+      }
+    ]
+  }
+}

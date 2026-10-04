@@ -1,0 +1,566 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-04T18:28:28.768Z",
+  "title": "Design System: Spotter",
+  "extensions": {
+    "colorMeta": {
+      "rail-grey": {
+        "role": "neutral",
+        "displayName": "Rail Grey",
+        "purpose": "Sidebar and player bar.",
+        "canonical": "#191919",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#808080",
+          "#a4a4a4",
+          "#cacaca",
+          "#eeeeee"
+        ]
+      },
+      "ground-grey": {
+        "role": "neutral",
+        "displayName": "Ground Grey",
+        "purpose": "Content area.",
+        "canonical": "#1e1e1e",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#808080",
+          "#a4a4a4",
+          "#cacaca",
+          "#eeeeee"
+        ]
+      },
+      "card-grey": {
+        "role": "neutral",
+        "displayName": "Card Grey",
+        "purpose": "Sound cards at rest; button hover fill.",
+        "canonical": "#262626",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#808080",
+          "#a4a4a4",
+          "#cacaca",
+          "#eeeeee"
+        ]
+      },
+      "card-hover-grey": {
+        "role": "neutral",
+        "displayName": "Card Hover Grey",
+        "purpose": "Card hover; context-menu surface.",
+        "canonical": "#2c2c2c",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#808080",
+          "#a4a4a4",
+          "#cacaca",
+          "#eeeeee"
+        ]
+      },
+      "seam-grey": {
+        "role": "neutral",
+        "displayName": "Seam Grey",
+        "purpose": "1px region dividers; empty waveform; volume track.",
+        "canonical": "#3a3a3a",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#808080",
+          "#a4a4a4",
+          "#cacaca",
+          "#eeeeee"
+        ]
+      },
+      "control-edge": {
+        "role": "neutral",
+        "displayName": "Control Edge",
+        "purpose": "1px borders on controls at rest.",
+        "canonical": "#4a4a4a",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#808080",
+          "#a4a4a4",
+          "#cacaca",
+          "#eeeeee"
+        ]
+      },
+      "lit-edge": {
+        "role": "neutral",
+        "displayName": "Lit Edge",
+        "purpose": "Control borders on hover; menu border.",
+        "canonical": "#606060",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#808080",
+          "#a4a4a4",
+          "#cacaca",
+          "#eeeeee"
+        ]
+      },
+      "well-black": {
+        "role": "neutral",
+        "displayName": "Well Black",
+        "purpose": "Waveform well in a card; status line.",
+        "canonical": "#1b1b1b",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#808080",
+          "#a4a4a4",
+          "#cacaca",
+          "#eeeeee"
+        ]
+      },
+      "field-black": {
+        "role": "neutral",
+        "displayName": "Field Black",
+        "purpose": "Search field.",
+        "canonical": "#161616",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#808080",
+          "#a4a4a4",
+          "#cacaca",
+          "#eeeeee"
+        ]
+      },
+      "chip-grey": {
+        "role": "neutral",
+        "displayName": "Chip Grey",
+        "purpose": "Count pills; off switch.",
+        "canonical": "#2a2a2a",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#808080",
+          "#a4a4a4",
+          "#cacaca",
+          "#eeeeee"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "purpose": "Body text.",
+        "canonical": "#d8d8d8",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#808080",
+          "#a4a4a4",
+          "#cacaca",
+          "#eeeeee"
+        ]
+      },
+      "ink-strong": {
+        "role": "neutral",
+        "displayName": "Ink Strong",
+        "purpose": "Names, headings, active text.",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#808080",
+          "#a4a4a4",
+          "#cacaca",
+          "#eeeeee"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Ink Soft",
+        "purpose": "Metadata.",
+        "canonical": "#a3a3a3",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#808080",
+          "#a4a4a4",
+          "#cacaca",
+          "#eeeeee"
+        ]
+      },
+      "ink-faint": {
+        "role": "neutral",
+        "displayName": "Ink Faint",
+        "purpose": "Icons, placeholders, hints.",
+        "canonical": "#8c8c8c",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#808080",
+          "#a4a4a4",
+          "#cacaca",
+          "#eeeeee"
+        ]
+      },
+      "ink-disabled": {
+        "role": "neutral",
+        "displayName": "Ink Disabled",
+        "purpose": "Disabled controls only.",
+        "canonical": "#6a6a6a",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#808080",
+          "#a4a4a4",
+          "#cacaca",
+          "#eeeeee"
+        ]
+      },
+      "wave-ahead": {
+        "role": "neutral",
+        "displayName": "Wave Ahead",
+        "purpose": "Unplayed waveform bars.",
+        "canonical": "#5c5c5c",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#808080",
+          "#a4a4a4",
+          "#cacaca",
+          "#eeeeee"
+        ]
+      },
+      "mark-teal": {
+        "role": "primary",
+        "displayName": "Mark Teal",
+        "purpose": "Selected outline, on state, play button, focus border.",
+        "canonical": "#3f8a92",
+        "tonalRamp": [
+          "#00121a",
+          "#002d35",
+          "#004a52",
+          "#186a71",
+          "#428d95",
+          "#68b2bb",
+          "#8fd9e1",
+          "#b2feff"
+        ]
+      },
+      "mark-teal-lit": {
+        "role": "primary",
+        "displayName": "Mark Teal Lit",
+        "purpose": "Play button hover.",
+        "canonical": "#4a9aa2",
+        "tonalRamp": [
+          "#00121a",
+          "#002e35",
+          "#004b53",
+          "#0c6a72",
+          "#3d8e96",
+          "#64b3bb",
+          "#8adae2",
+          "#aeffff"
+        ]
+      },
+      "pale-teal": {
+        "role": "primary",
+        "displayName": "Pale Teal",
+        "purpose": "Played waveform, playing name, focus ring.",
+        "canonical": "#6fb4bb",
+        "tonalRamp": [
+          "#001218",
+          "#002d33",
+          "#004a51",
+          "#206970",
+          "#488d94",
+          "#6db2b9",
+          "#93d8e0",
+          "#b6fdff"
+        ]
+      },
+      "teal-wash": {
+        "role": "primary",
+        "displayName": "Teal Wash",
+        "purpose": "Selected rows, active toggle, menu highlight.",
+        "canonical": "#16383b",
+        "tonalRamp": [
+          "#001012",
+          "#062a2d",
+          "#244649",
+          "#426468",
+          "#64888b",
+          "#88acb0",
+          "#add3d6",
+          "#d1f7fa"
+        ]
+      },
+      "teal-chip": {
+        "role": "primary",
+        "displayName": "Teal Chip",
+        "purpose": "Count pill on a selected row.",
+        "canonical": "#1f4549",
+        "tonalRamp": [
+          "#001014",
+          "#012a2e",
+          "#21464a",
+          "#3f6569",
+          "#61888c",
+          "#85adb1",
+          "#aad3d8",
+          "#cef8fc"
+        ]
+      },
+      "error-red": {
+        "role": "error",
+        "displayName": "Error Red",
+        "purpose": "Missing folder; error status.",
+        "canonical": "#e57373",
+        "tonalRamp": [
+          "#280000",
+          "#49030c",
+          "#6b2527",
+          "#8d4444",
+          "#b46766",
+          "#dc8b89",
+          "#ffb1ae",
+          "#ffd4d1"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "title": {
+        "displayName": "Title",
+        "purpose": "Toolbar heading and empty-state heading."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Rows, buttons, menu items, labels."
+      },
+      "body-strong": {
+        "displayName": "Body Strong",
+        "purpose": "Sound names on cards and in the player."
+      },
+      "meta": {
+        "displayName": "Meta",
+        "purpose": "Counts, folders, status, hints, footer line."
+      },
+      "section": {
+        "displayName": "Section",
+        "purpose": "MUSIC and SFX sidebar section headers (buttons)."
+      },
+      "numeric": {
+        "displayName": "Numeric",
+        "purpose": "Durations, time, count pills, format chips."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "none",
+        "value": "none",
+        "purpose": "No transitions or animations; only playback (playhead and waveform fill) moves."
+      }
+    ],
+    "focus": [
+      {
+        "name": "focus-ring",
+        "value": "outline: 1px solid #6fb4bb; outline-offset: 1px",
+        "purpose": "Keyboard focus on every control."
+      },
+      {
+        "name": "field-focus",
+        "value": "border-color: #3f8a92",
+        "purpose": "Search field focus, no ring."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "player-compact",
+        "value": "1180px"
+      },
+      {
+        "name": "volume-short",
+        "value": "760px"
+      },
+      {
+        "name": "narrow",
+        "value": "600px"
+      },
+      {
+        "name": "player-stacked",
+        "value": "520px"
+      }
+    ],
+    "layout": {
+      "sidebar": "clamp(156px, 28%, 228px)",
+      "toolbar": "44px",
+      "player": "60px",
+      "cardMinWidth": "176px",
+      "cardHeight": "112px",
+      "gridPadding": "12px",
+      "gridGap": "10px",
+      "listRow": "32px"
+    },
+    "waveform": {
+      "bar": "2px",
+      "gap": "1px",
+      "played": "#6fb4bb",
+      "ahead": "#5c5c5c",
+      "empty": "#3a3a3a"
+    }
+  },
+  "components": [
+    {
+      "name": "Button",
+      "kind": "button",
+      "refersTo": "button",
+      "description": "Standard 26px outlined control: Rescan, Insert, empty-state actions.",
+      "html": "<button class=\"ds-btn\">Rescan folders</button>",
+      "css": ":host{--rail:#191919;--ground:#1e1e1e;--raised:#262626;--raised-hover:#2c2c2c;--seam:#3a3a3a;--edge:#4a4a4a;--edge-lit:#606060;--ink:#d8d8d8;--ink-strong:#ffffff;--ink-soft:#a3a3a3;--ink-faint:#8c8c8c;--teal:#3f8a92;--teal-wash:#16383b;--teal-pale:#6fb4bb;--error:#e57373;--sans:\"Inter\",\"Adobe Clean\",\"Segoe UI\",system-ui,sans-serif;--mono:\"JetBrains Mono\",Consolas,Menlo,monospace;--r-card:8px;--r-control:5px;} .ds-btn{display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px;border:1px solid var(--edge);border-radius:var(--r-control);background:transparent;color:var(--ink);font:400 12px/16px var(--sans);letter-spacing:.01em;} .ds-btn:hover{border-color:var(--edge-lit);background:var(--raised);color:var(--ink-strong);} .ds-btn:active{background:var(--raised-hover);} .ds-btn:focus-visible{outline:1px solid var(--teal-pale);outline-offset:1px;}"
+    },
+    {
+      "name": "Play Button",
+      "kind": "button",
+      "refersTo": "play-button",
+      "description": "The player's round teal play button.",
+      "html": "<button class=\"ds-play\" aria-label=\"Play\"><svg viewBox=\"0 0 16 16\" width=\"15\" height=\"15\" fill=\"currentColor\"><path d=\"M4.5 2.5v11l9-5.5z\"/></svg></button>",
+      "css": ":host{--rail:#191919;--ground:#1e1e1e;--raised:#262626;--raised-hover:#2c2c2c;--seam:#3a3a3a;--edge:#4a4a4a;--edge-lit:#606060;--ink:#d8d8d8;--ink-strong:#ffffff;--ink-soft:#a3a3a3;--ink-faint:#8c8c8c;--teal:#3f8a92;--teal-wash:#16383b;--teal-pale:#6fb4bb;--error:#e57373;--sans:\"Inter\",\"Adobe Clean\",\"Segoe UI\",system-ui,sans-serif;--mono:\"JetBrains Mono\",Consolas,Menlo,monospace;--r-card:8px;--r-control:5px;} .ds-play{width:34px;height:34px;display:grid;place-items:center;padding:0;border:0;border-radius:50%;background:var(--teal);color:var(--ink-strong);} .ds-play:hover{background:#4a9aa2;} .ds-play:focus-visible{outline:1px solid var(--teal-pale);outline-offset:1px;}"
+    },
+    {
+      "name": "Search Field",
+      "kind": "input",
+      "refersTo": "search-field",
+      "description": "Recessed search input; focus is a teal border, no ring.",
+      "html": "<label class=\"ds-search\"><svg viewBox=\"0 0 16 16\" width=\"13\" height=\"13\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\"><circle cx=\"7\" cy=\"7\" r=\"4.5\"/><path d=\"M10.5 10.5 14 14\"/></svg><input type=\"search\" placeholder=\"Search\"></label>",
+      "css": ":host{--rail:#191919;--ground:#1e1e1e;--raised:#262626;--raised-hover:#2c2c2c;--seam:#3a3a3a;--edge:#4a4a4a;--edge-lit:#606060;--ink:#d8d8d8;--ink-strong:#ffffff;--ink-soft:#a3a3a3;--ink-faint:#8c8c8c;--teal:#3f8a92;--teal-wash:#16383b;--teal-pale:#6fb4bb;--error:#e57373;--sans:\"Inter\",\"Adobe Clean\",\"Segoe UI\",system-ui,sans-serif;--mono:\"JetBrains Mono\",Consolas,Menlo,monospace;--r-card:8px;--r-control:5px;} .ds-search{position:relative;display:flex;align-items:center;width:220px;} .ds-search svg{position:absolute;left:8px;color:var(--ink-faint);} .ds-search input{width:100%;height:26px;padding:0 8px 0 26px;border:1px solid var(--edge);border-radius:var(--r-control);background:#161616;color:var(--ink-strong);font:400 12px/16px var(--sans);caret-color:var(--teal-pale);outline:none;} .ds-search input::placeholder{color:var(--ink-faint);} .ds-search input:focus{border-color:var(--teal);}"
+    },
+    {
+      "name": "Sound Card",
+      "kind": "card",
+      "refersTo": "sound-card",
+      "description": "Signature card, shown playing: real waveform in a recessed well, mini-play, name, mono duration, folder, format chip.",
+      "html": "<div class=\"ds-card\" tabindex=\"0\"><div class=\"ds-well\"><svg viewBox=\"0 0 120 40\" preserveAspectRatio=\"none\" class=\"ds-wave\"><g fill=\"#6fb4bb\"><rect x=\"0\" y=\"16\" width=\"2\" height=\"8\"/><rect x=\"3\" y=\"13\" width=\"2\" height=\"14\"/><rect x=\"6\" y=\"10\" width=\"2\" height=\"20\"/><rect x=\"9\" y=\"7\" width=\"2\" height=\"26\"/><rect x=\"12\" y=\"5\" width=\"2\" height=\"30\"/><rect x=\"15\" y=\"9\" width=\"2\" height=\"22\"/><rect x=\"18\" y=\"12\" width=\"2\" height=\"16\"/><rect x=\"21\" y=\"8\" width=\"2\" height=\"24\"/><rect x=\"24\" y=\"6\" width=\"2\" height=\"28\"/><rect x=\"27\" y=\"11\" width=\"2\" height=\"18\"/></g><g fill=\"#5c5c5c\"><rect x=\"30\" y=\"14\" width=\"2\" height=\"12\"/><rect x=\"33\" y=\"10\" width=\"2\" height=\"20\"/><rect x=\"36\" y=\"7\" width=\"2\" height=\"26\"/><rect x=\"39\" y=\"5\" width=\"2\" height=\"30\"/><rect x=\"42\" y=\"8\" width=\"2\" height=\"24\"/><rect x=\"45\" y=\"11\" width=\"2\" height=\"18\"/><rect x=\"48\" y=\"9\" width=\"2\" height=\"22\"/><rect x=\"51\" y=\"6\" width=\"2\" height=\"28\"/><rect x=\"54\" y=\"13\" width=\"2\" height=\"14\"/><rect x=\"57\" y=\"15\" width=\"2\" height=\"10\"/><rect x=\"60\" y=\"12\" width=\"2\" height=\"16\"/><rect x=\"63\" y=\"10\" width=\"2\" height=\"20\"/><rect x=\"66\" y=\"8\" width=\"2\" height=\"24\"/><rect x=\"69\" y=\"11\" width=\"2\" height=\"18\"/><rect x=\"72\" y=\"14\" width=\"2\" height=\"12\"/><rect x=\"75\" y=\"16\" width=\"2\" height=\"8\"/><rect x=\"78\" y=\"13\" width=\"2\" height=\"14\"/><rect x=\"81\" y=\"10\" width=\"2\" height=\"20\"/><rect x=\"84\" y=\"7\" width=\"2\" height=\"26\"/><rect x=\"87\" y=\"5\" width=\"2\" height=\"30\"/><rect x=\"90\" y=\"9\" width=\"2\" height=\"22\"/><rect x=\"93\" y=\"12\" width=\"2\" height=\"16\"/><rect x=\"96\" y=\"8\" width=\"2\" height=\"24\"/><rect x=\"99\" y=\"11\" width=\"2\" height=\"18\"/><rect x=\"102\" y=\"14\" width=\"2\" height=\"12\"/><rect x=\"105\" y=\"15\" width=\"2\" height=\"10\"/><rect x=\"108\" y=\"13\" width=\"2\" height=\"14\"/><rect x=\"111\" y=\"10\" width=\"2\" height=\"20\"/><rect x=\"114\" y=\"9\" width=\"2\" height=\"22\"/><rect x=\"117\" y=\"11\" width=\"2\" height=\"18\"/></g></svg></div><div class=\"ds-info\"><button class=\"ds-mini\" aria-label=\"Play\"><svg viewBox=\"0 0 16 16\" width=\"11\" height=\"11\" fill=\"currentColor\"><path d=\"M4.5 2.5v11l9-5.5z\"/></svg></button><div class=\"ds-name\">Harbour at Dawn</div><div class=\"ds-meta\"><span class=\"ds-dur\">2:56</span><span>Cinematic</span><span class=\"ds-fmt\">MP3</span></div></div></div>",
+      "css": ":host{--rail:#191919;--ground:#1e1e1e;--raised:#262626;--raised-hover:#2c2c2c;--seam:#3a3a3a;--edge:#4a4a4a;--edge-lit:#606060;--ink:#d8d8d8;--ink-strong:#ffffff;--ink-soft:#a3a3a3;--ink-faint:#8c8c8c;--teal:#3f8a92;--teal-wash:#16383b;--teal-pale:#6fb4bb;--error:#e57373;--sans:\"Inter\",\"Adobe Clean\",\"Segoe UI\",system-ui,sans-serif;--mono:\"JetBrains Mono\",Consolas,Menlo,monospace;--r-card:8px;--r-control:5px;} .ds-card{width:220px;height:112px;display:flex;flex-direction:column;border:1px solid transparent;border-radius:var(--r-card);background:var(--raised);color:var(--ink);font:400 12px/16px var(--sans);letter-spacing:.01em;overflow:hidden;} .ds-card:hover{background:var(--raised-hover);} .ds-card:focus-visible{border-color:var(--teal);outline:none;} .ds-card:focus-visible .ds-well{background:#182224;} .ds-well{height:56px;margin:6px 6px 0;border-radius:5px;background:#1b1b1b;padding:6px 8px;} .ds-wave{width:100%;height:100%;display:block;} .ds-info{display:grid;grid-template-columns:22px minmax(0,1fr);column-gap:8px;align-items:center;padding:8px 10px 0 8px;} .ds-mini{grid-row:1/span 2;width:22px;height:22px;display:grid;place-items:center;padding:0;border-radius:50%;border:1px solid var(--edge);background:transparent;color:var(--ink);} .ds-mini:hover{border-color:var(--teal-pale);color:var(--ink-strong);} .ds-name{font-weight:600;color:var(--teal-pale);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;} .ds-meta{display:flex;gap:6px;align-items:center;margin-top:2px;color:var(--ink-soft);font-size:11px;line-height:14px;} .ds-dur{font:500 11px/14px var(--mono);} .ds-fmt{margin-left:auto;padding:0 5px;height:17px;border:1px solid #444;border-radius:4px;font:500 11px/15px var(--mono);letter-spacing:.02em;}"
+    },
+    {
+      "name": "Sidebar Tree Row",
+      "kind": "nav",
+      "refersTo": "tree-row",
+      "description": "Folder rows with count pills; selected is teal wash; a missing folder is struck through.",
+      "html": "<ul class=\"ds-tree\"><li class=\"ds-row\"><span class=\"ds-rn\">Cinematic</span><span class=\"ds-pill\">8</span></li><li class=\"ds-row is-sel\"><span class=\"ds-rn\">Lo-Fi</span><span class=\"ds-pill\">4</span></li><li class=\"ds-row is-miss\"><span class=\"ds-rn\">Archive SFX</span><span class=\"ds-note\">Not found</span></li></ul>",
+      "css": ":host{--rail:#191919;--ground:#1e1e1e;--raised:#262626;--raised-hover:#2c2c2c;--seam:#3a3a3a;--edge:#4a4a4a;--edge-lit:#606060;--ink:#d8d8d8;--ink-strong:#ffffff;--ink-soft:#a3a3a3;--ink-faint:#8c8c8c;--teal:#3f8a92;--teal-wash:#16383b;--teal-pale:#6fb4bb;--error:#e57373;--sans:\"Inter\",\"Adobe Clean\",\"Segoe UI\",system-ui,sans-serif;--mono:\"JetBrains Mono\",Consolas,Menlo,monospace;--r-card:8px;--r-control:5px;} .ds-tree{list-style:none;margin:0;padding:8px 0;width:220px;background:var(--rail);font:400 12px/16px var(--sans);} .ds-row{display:flex;align-items:center;gap:4px;height:26px;padding:0 8px 0 18px;margin:0 6px;border-radius:var(--r-control);color:var(--ink);} .ds-row:hover{background:#222;} .ds-row.is-sel{background:var(--teal-wash);color:var(--ink-strong);} .ds-rn{flex:1;} .ds-pill{min-width:22px;padding:0 6px;height:17px;border-radius:9px;background:#2a2a2a;color:var(--ink-soft);font:500 11px/17px var(--mono);text-align:center;} .is-sel .ds-pill{background:#1f4549;color:var(--ink-strong);} .is-miss .ds-rn{color:var(--ink-faint);text-decoration:line-through;text-decoration-color:#555;} .ds-note{font-size:11px;color:var(--error);}"
+    },
+    {
+      "name": "View Toggle",
+      "kind": "chip",
+      "refersTo": "view-toggle-on",
+      "description": "Cards / list segmented toggle; active segment is teal wash.",
+      "html": "<div class=\"ds-seg\"><button aria-pressed=\"true\" aria-label=\"Cards\"><svg viewBox=\"0 0 16 16\" width=\"13\" height=\"13\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\"><rect x=\"2.5\" y=\"2.5\" width=\"4.5\" height=\"4.5\" rx=\"1\"/><rect x=\"9\" y=\"2.5\" width=\"4.5\" height=\"4.5\" rx=\"1\"/><rect x=\"2.5\" y=\"9\" width=\"4.5\" height=\"4.5\" rx=\"1\"/><rect x=\"9\" y=\"9\" width=\"4.5\" height=\"4.5\" rx=\"1\"/></svg></button><button aria-pressed=\"false\" aria-label=\"List\"><svg viewBox=\"0 0 16 16\" width=\"13\" height=\"13\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\"><path d=\"M3 4.5h10M3 8h10M3 11.5h10\"/></svg></button></div>",
+      "css": ":host{--rail:#191919;--ground:#1e1e1e;--raised:#262626;--raised-hover:#2c2c2c;--seam:#3a3a3a;--edge:#4a4a4a;--edge-lit:#606060;--ink:#d8d8d8;--ink-strong:#ffffff;--ink-soft:#a3a3a3;--ink-faint:#8c8c8c;--teal:#3f8a92;--teal-wash:#16383b;--teal-pale:#6fb4bb;--error:#e57373;--sans:\"Inter\",\"Adobe Clean\",\"Segoe UI\",system-ui,sans-serif;--mono:\"JetBrains Mono\",Consolas,Menlo,monospace;--r-card:8px;--r-control:5px;} .ds-seg{display:inline-flex;border:1px solid var(--edge);border-radius:var(--r-control);overflow:hidden;} .ds-seg button{width:28px;height:24px;display:grid;place-items:center;padding:0;border:0;background:transparent;color:var(--ink-faint);} .ds-seg button+button{border-left:1px solid var(--edge);} .ds-seg button:hover{color:var(--ink-strong);} .ds-seg button[aria-pressed=\"true\"]{background:var(--teal-wash);color:var(--ink-strong);} .ds-seg button:focus-visible{outline:1px solid var(--teal-pale);outline-offset:-2px;}"
+    },
+    {
+      "name": "Auto-Play Switch",
+      "kind": "custom",
+      "refersTo": "switch-on",
+      "description": "28 by 16 switch; on is mark teal.",
+      "html": "<button class=\"ds-switch\" role=\"switch\" aria-checked=\"true\" aria-label=\"Auto-Play\"></button>",
+      "css": ":host{--rail:#191919;--ground:#1e1e1e;--raised:#262626;--raised-hover:#2c2c2c;--seam:#3a3a3a;--edge:#4a4a4a;--edge-lit:#606060;--ink:#d8d8d8;--ink-strong:#ffffff;--ink-soft:#a3a3a3;--ink-faint:#8c8c8c;--teal:#3f8a92;--teal-wash:#16383b;--teal-pale:#6fb4bb;--error:#e57373;--sans:\"Inter\",\"Adobe Clean\",\"Segoe UI\",system-ui,sans-serif;--mono:\"JetBrains Mono\",Consolas,Menlo,monospace;--r-card:8px;--r-control:5px;} .ds-switch{position:relative;width:28px;height:16px;padding:0;border-radius:8px;border:1px solid var(--edge);background:#2a2a2a;} .ds-switch::after{content:\"\";position:absolute;top:2px;left:2px;width:10px;height:10px;border-radius:50%;background:var(--ink-faint);} .ds-switch[aria-checked=\"true\"]{background:var(--teal);border-color:var(--teal);} .ds-switch[aria-checked=\"true\"]::after{left:14px;background:var(--ink-strong);} .ds-switch:focus-visible{outline:1px solid var(--teal-pale);outline-offset:1px;}"
+    },
+    {
+      "name": "Context Menu",
+      "kind": "custom",
+      "refersTo": "menu",
+      "description": "The only floating surface: lit-edge border, no shadow.",
+      "html": "<div class=\"ds-menu\" role=\"menu\"><button role=\"menuitem\">Import into project<span class=\"ds-hint\">Double-click</span></button><button role=\"menuitem\">Insert at playhead</button><hr><button role=\"menuitem\">Reveal in Explorer</button></div>",
+      "css": ":host{--rail:#191919;--ground:#1e1e1e;--raised:#262626;--raised-hover:#2c2c2c;--seam:#3a3a3a;--edge:#4a4a4a;--edge-lit:#606060;--ink:#d8d8d8;--ink-strong:#ffffff;--ink-soft:#a3a3a3;--ink-faint:#8c8c8c;--teal:#3f8a92;--teal-wash:#16383b;--teal-pale:#6fb4bb;--error:#e57373;--sans:\"Inter\",\"Adobe Clean\",\"Segoe UI\",system-ui,sans-serif;--mono:\"JetBrains Mono\",Consolas,Menlo,monospace;--r-card:8px;--r-control:5px;} .ds-menu{min-width:190px;padding:4px;border:1px solid var(--edge-lit);border-radius:6px;background:#2c2c2c;font:400 12px/16px var(--sans);} .ds-menu button{display:flex;width:100%;align-items:center;justify-content:space-between;gap:16px;height:24px;padding:0 8px;border:0;border-radius:4px;background:none;color:var(--ink);text-align:left;font:inherit;} .ds-menu button:hover,.ds-menu button:focus-visible{background:var(--teal-wash);color:var(--ink-strong);outline:none;} .ds-hint{color:var(--ink-faint);font-size:11px;} .ds-menu hr{height:1px;margin:4px 2px;border:0;background:#3e3e3e;}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Docked Native",
+    "overview": "Spotter is a sound browser that should read as one more Premiere Pro panel, not as a product with its own theme. It wears Premiere's grey ladder, Premiere's type sizes and Premiere's 1px seams, and lets exactly one colour in: the dark teal of the Narrative Node mark, which appears only where something is chosen or playing. Everything else is grey, so the teal always means \"this one\".\n\nThe panel is dense and docked, often narrow, used in a dark edit suite while auditioning many sounds and placing few. The content is the user's own files drawn as their real waveforms with real durations; the waveform is the only picture in the system and it is never decorative. Depth is a lighter grey, never a shadow. Nothing moves except playback: the playhead advancing and the played portion of a waveform filling pale teal.\n\nSpotter shares the greys, type and doctrine of its sibling Navigator, but its accent is teal, not Navigator's blue.",
+    "keyCharacteristics": [
+      "Premiere's neutral greys; teal reserved for selection, the on state, and playback.",
+      "Real waveforms on every card, row and the player; played portion in pale teal.",
+      "Flat: no shadows, no gradients for depth, no transitions.",
+      "Inter at 11 to 13px with JetBrains Mono for every number (durations, counts, time, formats).",
+      "Rounded cards (8px) against tighter controls (5px), round play buttons, pill counts."
+    ],
+    "rules": [
+      {
+        "name": "The Teal Means Chosen Rule",
+        "body": "Teal appears only on what is selected, switched on, focused or playing. A teal element at rest, unselected and silent, is a bug.",
+        "section": "colors"
+      },
+      {
+        "name": "The Premiere Ladder Rule",
+        "body": "Surfaces step through the grey ladder (rail, ground, card, card hover) and recessed wells go darker than the ground. No tinted neutrals, no new greys for a single element.",
+        "section": "colors"
+      },
+      {
+        "name": "The 11px Floor Rule",
+        "body": "Nothing is set below 11px.",
+        "section": "typography"
+      },
+      {
+        "name": "The Numbers Are Mono Rule",
+        "body": "Every duration, time, count and file format is JetBrains Mono; no number is set in Inter.",
+        "section": "typography"
+      },
+      {
+        "name": "The Lighter Grey Rule",
+        "body": "To lift something, make it one grey lighter; to sink it, one grey darker. Never a shadow, never a blur.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Only Motion Is Playback Rule",
+        "body": "No transitions or animations. The playhead advancing and the waveform filling are the only things that move; state changes (hover, toggle, expand) are instant.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** keep teal to selected, on, focused and playing states (Mark Teal, Pale Teal, Teal Wash).",
+      "**Do** draw every waveform from the file's real peaks, played portion in Pale Teal.",
+      "**Do** set every number in JetBrains Mono 500 at 11px.",
+      "**Do** separate regions with 1px Seam Grey lines and lift surfaces by one step of the grey ladder.",
+      "**Do** use 8px radius for cards and 5px for controls, rows and fields.",
+      "**Do** let the player waveform keep its room on narrow panels; drop button words, then buttons, before it shrinks."
+    ],
+    "donts": [
+      "**Don't** use box-shadow, drop shadows or blur for depth or for the menu.",
+      "**Don't** add transitions or animations; only playback moves.",
+      "**Don't** colour chrome, headers or idle controls teal, and don't introduce a second accent.",
+      "**Don't** set any text below 11px.",
+      "**Don't** draw decorative or placeholder waveforms that are not the file's own."
+    ]
+  }
+}

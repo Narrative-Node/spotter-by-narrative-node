@@ -1,0 +1,6 @@
+#!/bin/sh
+# Spotter by Narrative Node: removes an earlier version first, so no stale file
+# sits beside the new signature (Premiere refuses an extension whose files and
+# signature disagree).
+rm -rf "/Library/Application Support/Adobe/CEP/extensions/com.narrativenode.spotter"
+exit 0

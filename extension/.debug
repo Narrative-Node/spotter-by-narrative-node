@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Development only: with PlayerDebugMode on, open http://localhost:8099 in Chrome to debug the panel.
+     The installers leave this file out. -->
+<ExtensionList>
+  <Extension Id="com.narrativenode.spotter.panel">
+    <HostList>
+      <Host Name="PPRO" Port="8099" />
+    </HostList>
+  </Extension>
+</ExtensionList>

@@ -1,0 +1,14 @@
+# Built by installer/build.mjs
+build/
+release/
+node_modules/
+
+# Certificates and keys never go in the repository.
+*.p12
+*.pfx
+.rnd
+*.rnd
+
+# Design review captures (regenerated from dev/preview.html)
+.impeccable/review/
+.impeccable/hook.cache.json
