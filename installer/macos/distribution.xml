@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Spotter by Narrative Node: Mac installer distribution file.
+     build.mjs fills in {{VERSION}} and passes this to productbuild with the resources folder. -->
+<installer-gui-script minSpecVersion="2">
+  <title>Spotter by Narrative Node</title>
+  <welcome file="welcome.html" mime-type="text/html"/>
+  <conclusion file="conclusion.html" mime-type="text/html"/>
+  <background file="background.png" mime-type="image/png" alignment="bottomleft" scaling="proportional"/>
+  <background-darkAqua file="background-darkAqua.png" mime-type="image/png" alignment="bottomleft" scaling="proportional"/>
+  <options customize="never" require-scripts="false" rootVolumeOnly="true"/>
+  <domains enable_anywhere="false" enable_currentUserHome="false" enable_localSystem="true"/>
+  <choices-outline>
+    <line choice="spotter"/>
+  </choices-outline>
+  <choice id="spotter" visible="false" title="Spotter by Narrative Node">
+    <pkg-ref id="com.narrativenode.spotter"/>
+  </choice>
+  <pkg-ref id="com.narrativenode.spotter" version="{{VERSION}}" onConclusion="none">component.pkg</pkg-ref>
+</installer-gui-script>

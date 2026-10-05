@@ -57,7 +57,9 @@ To run your working copy inside Premiere, turn on CEP's debug mode for your Prem
 
 The workflow runs the tests, builds the Windows installer and the `.zxp` on Windows and the `.pkg` on a Mac runner, and publishes a release named after the tag with the three files and `SHA256SUMS.txt`. The tag must match the manifest version or the build stops. A tag with a hyphen (`v1.1.0-beta.1`) is published as a pre-release. **Run workflow** on the Actions tab builds without publishing.
 
-To sign every `.zxp` with the same certificate, make one with `ZXPSignCmd -selfSignedCert` and add the repository secrets `SPOTTER_P12_BASE64` (the `.p12` as one line of base64) and `SPOTTER_P12_PASSWORD`. Without them each build makes its own.
+To code-sign the Windows installer (.exe), add the repository secrets `WINDOWS_CERT_PFX_BASE64` (the `.pfx` as base64) and `WINDOWS_CERT_PASSWORD`.
+To code-sign and notarise the macOS package (.pkg), add `MAC_CERTS_P12_BASE64` (Developer ID Application and Installer certificates), `MAC_CERTS_PASSWORD`, `APPLE_ID`, `APPLE_TEAM_ID`, and `APPLE_APP_PASSWORD`.
+To sign every `.zxp` with the same certificate, make one with `ZXPSignCmd -selfSignedCert` and add `SPOTTER_P12_BASE64` (the `.p12` as one line of base64) and `SPOTTER_P12_PASSWORD`. Without them each build makes its own self-signed certificate.
 
 ## How it is put together
 

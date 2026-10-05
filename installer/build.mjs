@@ -113,13 +113,21 @@ function buildMac() {
   rmSync(payload, { recursive: true, force: true });
   const target = join(payload, "Library/Application Support/Adobe/CEP/extensions", ID);
   cpSync(signed, target, { recursive: true });
-  const scripts = join(root, "installer/macos/scripts");
+  const macDir = join(root, "installer/macos");
+  const scripts = join(macDir, "scripts");
   for (const name of readdirSync(scripts)) chmodSync(join(scripts, name), 0o755);
   const component = join(build, "component.pkg");
   run("pkgbuild", ["--root", payload, "--scripts", scripts, "--identifier", ID, "--version", version, "--install-location", "/", component]);
   const pkg = join(release, `Spotter-${version}.pkg`);
   const identity = process.env.MAC_INSTALLER_IDENTITY;
-  run("productbuild", ["--package", component, ...(identity ? ["--sign", identity] : []), pkg]);
+  const distFile = join(macDir, "distribution.xml");
+  if (existsSync(distFile)) {
+    const distribution = join(build, "distribution.xml");
+    writeFileSync(distribution, readFileSync(distFile, "utf8").replaceAll("{{VERSION}}", version));
+    run("productbuild", ["--distribution", distribution, "--resources", join(macDir, "resources"), "--package-path", build, ...(identity ? ["--sign", identity] : []), pkg]);
+  } else {
+    run("productbuild", ["--package", component, ...(identity ? ["--sign", identity] : []), pkg]);
+  }
   if (identity && process.env.MAC_NOTARY_PROFILE) {
     run("xcrun", ["notarytool", "submit", pkg, "--keychain-profile", process.env.MAC_NOTARY_PROFILE, "--wait"]);
     run("xcrun", ["stapler", "staple", pkg]);
@@ -145,9 +153,16 @@ function findIscc() {
 
 function findSigntool() {
   const kits = "C:/Program Files (x86)/Windows Kits/10/bin";
-  if (!existsSync(kits)) return null;
-  const versions = readdirSync(kits).filter((v) => /^10\./.test(v)).sort().reverse();
-  return versions.map((v) => join(kits, v, "x64", "signtool.exe")).find((path) => existsSync(path)) ?? null;
+  if (existsSync(kits)) {
+    const versions = readdirSync(kits).filter((v) => /^10\./.test(v)).sort().reverse();
+    const found = versions.map((v) => join(kits, v, "x64", "signtool.exe")).find((path) => existsSync(path));
+    if (found) return found;
+  }
+  try {
+    const where = execFileSync("where.exe", ["signtool.exe"], { encoding: "utf8" }).trim().split(/\r?\n/)[0];
+    if (where && existsSync(where)) return where;
+  } catch {}
+  return null;
 }
 
 function run(command, args) {
