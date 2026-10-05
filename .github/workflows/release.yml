@@ -58,7 +58,9 @@ jobs:
         if: runner.os == 'Windows'
         run: choco install innosetup --no-progress -y
 
-      # Windows installer code signing (.exe). Uses WINDOWS_CERT_PFX_BASE64 and password, or WINDOWS_SIGN_ARGS.
+      # Windows installer code signing (.exe).
+      # If repository secrets are provided, use them. Otherwise, automatically generate a
+      # self-signed code-signing certificate so GitHub always signs the installer.
       - name: Windows installer certificate
         if: runner.os == 'Windows'
         shell: bash
@@ -66,20 +68,29 @@ jobs:
           SIGN_ARGS: ${{ secrets.WINDOWS_SIGN_ARGS || secrets.SPOTTER_WINDOWS_SIGN_ARGS }}
           PFX_BASE64: ${{ secrets.WINDOWS_CERT_PFX_BASE64 || secrets.SPOTTER_WINDOWS_CERT_PFX_BASE64 }}
           PFX_PASSWORD: ${{ secrets.WINDOWS_CERT_PASSWORD || secrets.SPOTTER_WINDOWS_CERT_PASSWORD }}
-          SIGN_IS_TEST: ${{ vars.SIGN_IS_TEST }}
         run: |
+          pfx="$RUNNER_TEMP/codesign.pfx"
           if [ -n "$SIGN_ARGS" ]; then
             echo "WINDOWS_SIGN_ARGS=$SIGN_ARGS" >> "$GITHUB_ENV"
-          elif [ -n "$PFX_BASE64" ]; then
-            pfx="$RUNNER_TEMP/codesign.pfx"
+            exit 0
+          fi
+          if [ -n "$PFX_BASE64" ]; then
             echo "$PFX_BASE64" | base64 -d > "$pfx"
             echo "WINDOWS_SIGN_ARGS=/f $(cygpath -w "$pfx") /p \"$PFX_PASSWORD\" /fd sha256 /tr http://timestamp.digicert.com /td sha256" >> "$GITHUB_ENV"
-            if [ -z "$SIGN_IS_TEST" ]; then
-              echo "SIGN_IS_TEST=1" >> "$GITHUB_ENV"
-            fi
-          else
-            echo "::warning::No WINDOWS_CERT_PFX_BASE64 or WINDOWS_SIGN_ARGS secret: building UNSIGNED Windows installer."
+            exit 0
           fi
+          # Automatically create a self-signed code-signing certificate on the fly
+          key="$RUNNER_TEMP/codesign.key"
+          crt="$RUNNER_TEMP/codesign.crt"
+          pw="SpotterPass123"
+          openssl req -x509 -newkey rsa:2048 -nodes -keyout "$key" -out "$crt" -days 3650 \
+            -subj "/CN=Spotter by Narrative Node/O=Narrative Node/C=LK" \
+            -addext "keyUsage = digitalSignature" \
+            -addext "extendedKeyUsage = codeSigning"
+          openssl pkcs12 -export -out "$pfx" -inkey "$key" -in "$crt" -passout "pass:$pw"
+          rm -f "$key" "$crt"
+          echo "WINDOWS_SIGN_ARGS=/f $(cygpath -w "$pfx") /p \"$pw\" /fd sha256 /tr http://timestamp.digicert.com /td sha256" >> "$GITHUB_ENV"
+          echo "SIGN_IS_TEST=1" >> "$GITHUB_ENV"
 
       # macOS package signing and notarisation
       - name: macOS certificates and notary login
@@ -92,7 +103,6 @@ jobs:
           APPLE_APP_PASSWORD: ${{ secrets.APPLE_APP_PASSWORD }}
         run: |
           if [ -z "$P12_BASE64" ]; then
-            echo "::warning::No MAC_CERTS_P12_BASE64 secret: building unsigned macOS package."
             exit 0
           fi
           kc="$RUNNER_TEMP/build.keychain-db"; pw=$(uuidgen)
