@@ -39,6 +39,9 @@ WizardStyle=modern dark
 WizardImageFile=art\side-100.bmp,art\side-125.bmp,art\side-150.bmp,art\side-175.bmp,art\side-200.bmp,art\side-225.bmp,art\side-250.bmp
 WizardSmallImageFile=art\head-100.png,art\head-125.png,art\head-150.png,art\head-175.png,art\head-200.png,art\head-225.png,art\head-250.png
 SetupIconFile=art\spotter.ico
+; Inno hides the welcome page unless told otherwise, and the side banner lives only there.
+DisableWelcomePage=no
+DisableReadyPage=no
 ArchitecturesAllowed=x64compatible
 ArchitecturesInstallIn64BitMode=x64compatible
 #ifdef SIGN

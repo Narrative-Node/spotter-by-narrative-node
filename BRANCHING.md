@@ -49,15 +49,28 @@ git push origin dev --tags
 - `package.json`
 - `extension/CSXS/manifest.xml` (both `ExtensionBundleVersion` and Extension `Version`)
 - `extension/js/core.js`
-- `website/src/site.ts` (if present)
+
+*(Note: `website/src/site.ts` is intentionally NOT touched during dev bumps; the website quotes only published release versions on `main`).*
 
 The tag starts the GitHub Actions release workflow. The workflow stops if the tag and `extension/CSXS/manifest.xml` disagree. After the release is public, set `latest` in `spotter.json` of the updates repository.
 
-## Releasing to main
+## Releasing to main & updating the website
 
-1. `git switch dev && git pull`
-2. Open a pull request from `dev` into `main` and merge it.
-3. `git switch main && git pull`
+When ready to publish a release to customers:
+
+### Option A: Local release command (one step)
+```sh
+npm run release:main
+```
+This merges `dev` into `main`, pushes `main` to GitHub, and automatically updates `website/src/site.ts` with the new Spotter version and pushes it.
+
+### Option B: GitHub PR merge
+1. Merge the pull request from `dev` into `main` on GitHub.
+2. In the `website` directory, sync the website's product versions:
+```sh
+cd ../website
+npm run sync:versions -- --push
+```
 
 After a hotfix on `main`, merge `main` back into `dev`.
 

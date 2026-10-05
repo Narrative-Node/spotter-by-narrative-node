@@ -1,6 +1,6 @@
 {
   "name": "spotter-by-narrative-node",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A free Premiere Pro panel for browsing your music and sound-effect folders.",
   "private": true,
   "license": "GPL-3.0-or-later",
@@ -10,7 +10,8 @@
     "test": "node --test \"test/*.test.js\"",
     "build": "node installer/build.mjs",
     "bump": "node tools/bump-version.mjs",
-    "push:dev": "node tools/push-dev.mjs"
+    "push:dev": "node tools/push-dev.mjs",
+    "release:main": "node tools/release-main.mjs"
   },
   "engines": {
     "node": ">=20"

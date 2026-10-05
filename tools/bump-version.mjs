@@ -37,13 +37,6 @@ export function bumpVersion(target = "patch") {
   replace("extension/CSXS/manifest.xml", /(<Extension Id="com\.narrativenode\.spotter\.panel" Version=")[^"]+(")/, `$1${version}$2`);
   replace("extension/js/core.js", /(const VERSION = ")[^"]+(")/, `$1${version}$2`);
   replace("package.json", /("version":\s*")[^"]+(")/, `$1${version}$2`);
-
-  // The website is its own repository beside this one; its docs quote Spotter's version.
-  const website = join(root, "..", "website");
-  if (existsSync(join(website, "src/site.ts"))) {
-    replace("src/site.ts", /(spotter: \{\s*version: ")[^"]+(")/, `$1${version}$2`, { base: website });
-    console.log("  (the website is its own repository: commit that change there)");
-  }
   console.log('Also set "latest" in spotter.json of the updates repository once the release is published.');
 
   return version;
