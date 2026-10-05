@@ -91,6 +91,10 @@ async function ensureSigner() {
   return path;
 }
 
+function systemTar() {
+  return windows ? join(process.env.SystemRoot ?? "C:/Windows", "System32", "tar.exe") : "tar";
+}
+
 function buildWindows() {
   const iscc = findIscc();
   if (!iscc) throw new Error("Inno Setup 6 is not installed (winget install JRSoftware.InnoSetup).");
@@ -104,7 +108,14 @@ function buildWindows() {
     defines.push("/DSIGN", `/Ssigntool=${wrapper} $f`);
   }
   run(iscc, [...defines, join(root, "installer/windows/spotter.iss")]);
-  console.log(`\n  → ${join(release, `Spotter-Setup-${version}.exe`)}${signArgs ? "" : "  (installer not code-signed)"}`);
+  const exeName = `Spotter-Setup-${version}.exe`;
+  const zipName = `Spotter-Setup-${version}-windows.zip`;
+  const exePath = join(release, exeName);
+  const zipPath = join(release, zipName);
+  rmSync(zipPath, { force: true });
+  run(systemTar(), ["-a", "-cf", zipPath, "-C", release, exeName]);
+  console.log(`\n  → ${exePath}${signArgs ? "" : "  (installer not code-signed)"}`);
+  console.log(`  → ${zipPath}`);
   console.log(`  → ${zxp}`);
 }
 

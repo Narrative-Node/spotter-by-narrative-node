@@ -31,6 +31,7 @@ jobs:
             artifact: windows
             files: |
               release/Spotter-Setup-*.exe
+              release/Spotter-Setup-*.zip
               release/Spotter-*.zxp
           # The Mac package holds a copy of the extension signed on the Mac. The runner is Intel because
           # Adobe's ZXPSignCmd for macOS is an Intel binary.
@@ -178,7 +179,7 @@ jobs:
 
             **Install:** close Premiere Pro, run the installer for your computer, then open Window › Extensions › Spotter by Narrative Node.
 
-            - `Spotter-Setup-*.exe`: Windows 10 and 11 (64-bit). If Windows shows "Windows protected your PC", choose More info › Run anyway.
+            - `Spotter-Setup-*.zip` (or `.exe`): Windows 10 and 11 (64-bit). Extract and run the installer.
             - `Spotter-*.pkg`: macOS, Intel and Apple silicon. If macOS can't verify it, right-click the file and choose Open.
             - `Spotter-*.zxp`: for ZXP installers such as ZXPInstaller or Anastasiy's Extension Manager.
 
