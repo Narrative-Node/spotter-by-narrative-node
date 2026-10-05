@@ -39,6 +39,7 @@ jobs:
             artifact: macos
             files: |
               release/Spotter-*.pkg
+              release/Spotter-*-macos.zip
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4

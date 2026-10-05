@@ -55,7 +55,7 @@ To run your working copy inside Premiere, turn on CEP's debug mode for your Prem
 1. Bump the version in `extension/CSXS/manifest.xml` (both fields), `extension/js/core.js` and `package.json`.
 2. Commit, then `git tag v1.0.2 && git push origin v1.0.2`.
 
-The workflow runs the tests, builds the Windows installer (.zip and .exe) and the `.zxp` on Windows and the `.pkg` on a Mac runner, and publishes a release named after the tag with the files and `SHA256SUMS.txt`. The tag must match the manifest version or the build stops. A tag with a hyphen (`v1.1.0-beta.1`) is published as a pre-release. **Run workflow** on the Actions tab builds without publishing.
+The workflow runs the tests, builds the Windows installer (.zip and .exe), the macOS installer (.zip and .pkg), and the `.zxp`, and publishes a release named after the tag with the files and `SHA256SUMS.txt`. The tag must match the manifest version or the build stops. A tag with a hyphen (`v1.1.0-beta.1`) is published as a pre-release. **Run workflow** on the Actions tab builds without publishing.
 
 To code-sign the Windows installer (.exe), add the repository secrets `WINDOWS_CERT_PFX_BASE64` (the `.pfx` as base64) and `WINDOWS_CERT_PASSWORD`.
 To code-sign and notarise the macOS package (.pkg), add `MAC_CERTS_P12_BASE64` (Developer ID Application and Installer certificates), `MAC_CERTS_PASSWORD`, `APPLE_ID`, `APPLE_TEAM_ID`, and `APPLE_APP_PASSWORD`.

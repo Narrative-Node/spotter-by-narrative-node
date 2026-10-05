@@ -143,7 +143,17 @@ function buildMac() {
     run("xcrun", ["notarytool", "submit", pkg, "--keychain-profile", process.env.MAC_NOTARY_PROFILE, "--wait"]);
     run("xcrun", ["stapler", "staple", pkg]);
   }
+  const pkgName = `Spotter-${version}.pkg`;
+  const zipName = `Spotter-${version}-macos.zip`;
+  const zipPath = join(release, zipName);
+  rmSync(zipPath, { force: true });
+  try {
+    run("ditto", ["-c", "-k", "--keepParent", pkg, zipPath]);
+  } catch {
+    run("tar", ["-a", "-cf", zipPath, "-C", release, pkgName]);
+  }
   console.log(`\n  → ${pkg}${identity ? "" : "  (not signed or notarised: Gatekeeper will ask before opening it)"}`);
+  console.log(`  → ${zipPath}`);
   console.log(`  → ${zxp}`);
 }
 
