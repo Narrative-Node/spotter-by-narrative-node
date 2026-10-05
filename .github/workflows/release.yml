@@ -69,6 +69,7 @@ jobs:
           PFX_BASE64: ${{ secrets.WINDOWS_CERT_PFX_BASE64 || secrets.SPOTTER_WINDOWS_CERT_PFX_BASE64 }}
           PFX_PASSWORD: ${{ secrets.WINDOWS_CERT_PASSWORD || secrets.SPOTTER_WINDOWS_CERT_PASSWORD }}
         run: |
+          export MSYS2_ARG_CONV_EXCL="*"
           pfx="$RUNNER_TEMP/codesign.pfx"
           if [ -n "$SIGN_ARGS" ]; then
             echo "WINDOWS_SIGN_ARGS=$SIGN_ARGS" >> "$GITHUB_ENV"
@@ -85,8 +86,8 @@ jobs:
           pw="SpotterPass123"
           openssl req -x509 -newkey rsa:2048 -nodes -keyout "$key" -out "$crt" -days 3650 \
             -subj "/CN=Spotter by Narrative Node/O=Narrative Node/C=LK" \
-            -addext "keyUsage = digitalSignature" \
-            -addext "extendedKeyUsage = codeSigning"
+            -addext "keyUsage=digitalSignature" \
+            -addext "extendedKeyUsage=codeSigning"
           openssl pkcs12 -export -out "$pfx" -inkey "$key" -in "$crt" -passout "pass:$pw"
           rm -f "$key" "$crt"
           echo "WINDOWS_SIGN_ARGS=/f $(cygpath -w "$pfx") /p \"$pw\" /fd sha256 /tr http://timestamp.digicert.com /td sha256" >> "$GITHUB_ENV"
