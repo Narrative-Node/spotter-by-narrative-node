@@ -26,29 +26,38 @@ Open a pull request from your branch into `dev`. Delete the branch after the mer
 
 Start each commit message with a short type: `feat:` a new feature, `fix:` a bug fix, `docs:` text only, `chore:` upkeep, `release:` a version change.
 
-## Versions
+## Versions & Tags on every push to dev
 
-Use `major.minor.patch`. Add 1 to the patch for fixes, to the minor for new features that do not break anything, and to the major for a change that breaks something.
-
-One command changes the version in every file that holds it:
+Use `major.minor.patch`. Every push to `dev` increments the version number and pushes a matching tag:
 
 ```sh
-node tools/bump-version.mjs 1.0.3
+npm run push:dev                     # bumps patch (e.g. 1.0.2 → 1.0.3), commits, tags, and pushes
+npm run push:dev -- minor            # bumps minor, commits, tags, and pushes
+npm run push:dev -- major            # bumps major, commits, tags, and pushes
+npm run push:dev -- "feat: message"  # bumps patch with custom commit message
 ```
 
-It changes `extension/CSXS/manifest.xml` (both fields), `extension/js/core.js` and `package.json`. It also changes `src/site.ts` in the website repository when that folder is next to this one. Commit that change in the website repository.
+Or manually in steps:
+```sh
+npm run bump                         # or: node tools/bump-version.mjs [patch|minor|major|<x.y.z>]
+git commit -am "chore: bump version to $(node -p "require('./package.json').version")"
+git tag v$(node -p "require('./package.json').version")
+git push origin dev --tags
+```
 
-A release is a tag. The tag name is `v` and the version, for example `v1.0.2`. GitHub shows each tag in the list of tags and releases, and `git describe` shows the nearest tag in any commit.
+`node tools/bump-version.mjs` automatically increments the version and updates:
+- `package.json`
+- `extension/CSXS/manifest.xml` (both `ExtensionBundleVersion` and Extension `Version`)
+- `extension/js/core.js`
+- `website/src/site.ts` (if present)
 
-## Release
+The tag starts the GitHub Actions release workflow. The workflow stops if the tag and `extension/CSXS/manifest.xml` disagree. After the release is public, set `latest` in `spotter.json` of the updates repository.
+
+## Releasing to main
 
 1. `git switch dev && git pull`
-2. `node tools/bump-version.mjs 1.0.3`
-3. `git commit -am "release: v1.0.3"` and push. Open a pull request from `dev` into `main` and merge it.
-4. `git switch main && git pull`
-5. `git tag -a v1.0.3 -m "Spotter 1.0.3" && git push origin v1.0.3`
-
-The tag starts the release workflow. It stops when the tag and `extension/CSXS/manifest.xml` disagree. After the release is public, set `latest` in `spotter.json` of the updates repository.
+2. Open a pull request from `dev` into `main` and merge it.
+3. `git switch main && git pull`
 
 After a hotfix on `main`, merge `main` back into `dev`.
 

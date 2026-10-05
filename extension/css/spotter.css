@@ -105,10 +105,10 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.3; stroke-linecap: round
 .upsell:active { background: var(--teal-dark-active); }
 .upsell-icon { flex: none; width: 28px; height: 28px; display: grid; place-items: center; border: 1px solid rgba(240, 247, 250, 0.45); border-radius: 50%; color: #f0f7fa; }
 .upsell-icon svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
-.upsell-text { flex: 1; min-width: 0; display: grid; gap: 1px; }
-.upsell-title { font-size: 13px; line-height: 16px; font-weight: 600; color: var(--ink-strong); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.upsell-sub { font-size: 11px; line-height: 14px; font-weight: 500; color: #cfe3e5; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.upsell-badge { position: absolute; top: -9px; right: 20px; padding: 0 8px; height: 18px; border-radius: 9px; background: #f0f7fa; color: #0b1d1f; font-size: 11px; line-height: 18px; font-weight: 700; letter-spacing: 0.03em; white-space: nowrap; }
+.upsell-text { flex: 1; min-width: 0; display: grid; gap: 0; align-self: center; }
+.upsell-title { font-size: 13px; line-height: 15px; font-weight: 600; color: var(--ink-strong); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.upsell-sub { font-size: 11px; line-height: 15px; font-weight: 500; color: #cfe3e5; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.upsell-badge { position: absolute; top: -9px; right: 10px; padding: 0 8px; height: 18px; border-radius: 9px; background: #f0f7fa; color: #0b1d1f; font-size: 11px; line-height: 18px; font-weight: 700; letter-spacing: 0.03em; white-space: nowrap; }
 
 /* ------------------------------------------------------------- buttons */
 
@@ -129,7 +129,7 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.3; stroke-linecap: round
 .main { display: flex; flex-direction: column; min-width: 0; min-height: 0; }
 .bar { display: flex; align-items: center; gap: 10px; height: 44px; padding: 0 12px; border-bottom: 1px solid var(--seam); flex: none; }
 .heading { flex: 1; min-width: 120px; display: flex; align-items: baseline; gap: 8px; }
-.heading h1 { margin: 0; font-size: 13px; line-height: 16px; font-weight: 600; color: var(--ink-strong); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.heading h1 { margin: 0; font-size: 13px; line-height: 15px; font-weight: 600; color: var(--ink-strong); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .count { flex: none; color: var(--ink-soft); font-size: 11px; white-space: nowrap; }
 .size { flex: none; display: flex; align-items: center; gap: 6px; height: 26px; padding: 0 9px; border: 1px solid var(--edge); border-radius: var(--r-control); color: var(--ink-faint); }
 .size svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.3; }
@@ -228,16 +228,18 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.3; stroke-linecap: round
 
 .now-bar { flex: none; display: flex; align-items: baseline; gap: 8px; min-width: 0; height: 24px; padding: 4px 12px 0 12px; border-top: 1px solid var(--seam); background: var(--rail); }
 .player { flex: none; display: flex; align-items: center; gap: 12px; height: 56px; padding: 0 12px 4px; background: var(--rail); border-top: 1px solid var(--seam); }
-.play { flex: none; width: 34px; height: 34px; display: grid; place-items: center; padding: 0; border-radius: 50%; border: 1px solid var(--teal); background: var(--teal-dark); color: var(--ink-strong); cursor: pointer; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease; }
+.play { flex: none; width: 34px; height: 34px; display: grid; place-items: center; padding: 0; border-radius: 50%; border: 1px solid #3b3b3b; background: #3b3b3b; color: var(--ink-strong); cursor: pointer; transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease; }
 .play svg { width: 15px; height: 15px; fill: currentColor; stroke: none; }
 .play .i-play { margin-left: 1.5px; }
 .play .i-pause { display: none; margin-left: 0; }
 .play.is-playing .i-play { display: none; }
 .play.is-playing .i-pause { display: block; }
-.play:hover:not(:disabled) { background: var(--teal-dark-hover); border-color: var(--teal-pale); transform: scale(1.03); box-shadow: 0 0 10px rgba(41, 117, 125, 0.45); }
+.play:hover:not(:disabled) { background: #484848; border-color: #484848; transform: scale(1.03); }
 .play:active:not(:disabled) { transform: scale(0.97); }
-.play.is-playing { background: var(--teal); border-color: var(--teal-pale); }
-.play:disabled { background: #262626; border-color: #383838; color: #555555; cursor: default; box-shadow: none; transform: none; }
+/* Teal only while a sound plays; paused it is Premiere's grey. No light ring either way. */
+.play.is-playing { background: var(--teal); border-color: var(--teal); }
+.play.is-playing:hover:not(:disabled) { background: var(--teal-hover); border-color: var(--teal-hover); }
+.play:disabled { background: #262626; border-color: #262626; color: #555555; cursor: default; transform: none; }
 .now-name { flex: 0 1 auto; min-width: 0; font-weight: 600; color: var(--ink-strong); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .now-meta { flex: 1 1 0; min-width: 0; color: var(--ink-soft); font-size: 11px; line-height: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .player-wave { flex: 1 1 auto; min-width: 80px; height: 42px; cursor: pointer; }
