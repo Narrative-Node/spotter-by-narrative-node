@@ -48,6 +48,17 @@ To work on the panel without Premiere, open `dev/preview.html` in a browser. It 
 
 To run your working copy inside Premiere, turn on CEP's debug mode for your Premiere's CEP version (CSXS.12 for Premiere Pro 2025 and later, CSXS.11 before): the string value `PlayerDebugMode` = `1` under `HKEY_CURRENT_USER\Software\Adobe\CSXS.12` on Windows, or `defaults write com.adobe.CSXS.12 PlayerDebugMode 1` on a Mac, link or copy `extension/` into the CEP extensions folder as `com.narrativenode.spotter`, and open `http://localhost:8099` in Chrome to debug it.
 
+## Releasing
+
+`.github/workflows/release.yml` builds everything on GitHub and publishes it. To release:
+
+1. Bump the version in `extension/CSXS/manifest.xml` (both fields), `extension/js/core.js` and `package.json`.
+2. Commit, then `git tag v1.0.2 && git push origin v1.0.2`.
+
+The workflow runs the tests, builds the Windows installer and the `.zxp` on Windows and the `.pkg` on a Mac runner, and publishes a release named after the tag with the three files and `SHA256SUMS.txt`. The tag must match the manifest version or the build stops. A tag with a hyphen (`v1.1.0-beta.1`) is published as a pre-release. **Run workflow** on the Actions tab builds without publishing.
+
+To sign every `.zxp` with the same certificate, make one with `ZXPSignCmd -selfSignedCert` and add the repository secrets `SPOTTER_P12_BASE64` (the `.p12` as one line of base64) and `SPOTTER_P12_PASSWORD`. Without them each build makes its own.
+
 ## How it is put together
 
 | Path | What |

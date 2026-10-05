@@ -1,0 +1,118 @@
+# Builds Spotter's Windows installer, Mac package and ZXP, and publishes them to a GitHub release.
+#
+#   git tag v1.0.1 && git push origin v1.0.1     builds, then publishes release v1.0.1 with the files
+#   Actions > Release > Run workflow             builds only; the files are in the run's Artifacts
+#
+# The tag must match the version in extension/CSXS/manifest.xml, or the build stops.
+# GitHub reads workflows from the repository root, so this works once Spotter is its own repository.
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # Windows builds the installer and the .zxp. Adobe advises signing a .zxp on the platform it
+          # is for, and the Windows one is the .zxp that is published.
+          - os: windows-latest
+            artifact: windows
+            files: |
+              release/Spotter-Setup-*.exe
+              release/Spotter-*.zxp
+          # The Mac package holds a copy of the extension signed on the Mac. The runner is Intel because
+          # Adobe's ZXPSignCmd for macOS is an Intel binary.
+          - os: macos-15-intel
+            artifact: macos
+            files: |
+              release/Spotter-*.pkg
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Tag matches the extension version
+        if: startsWith(github.ref, 'refs/tags/v')
+        shell: bash
+        run: |
+          v=$(sed -n 's/.*ExtensionBundleVersion="\([^"]*\)".*/\1/p' extension/CSXS/manifest.xml)
+          [ "v$v" = "${GITHUB_REF_NAME}" ] || { echo "Tag ${GITHUB_REF_NAME} but extension/CSXS/manifest.xml says $v"; exit 1; }
+
+      - run: npm test
+
+      - name: Inno Setup
+        if: runner.os == 'Windows'
+        run: choco install innosetup --no-progress -y
+
+      # Optional. Without these secrets every build makes a new self-signed certificate for the .zxp,
+      # which is enough for Premiere to load it. With them, every release is signed by the same one.
+      #   SPOTTER_P12_BASE64   a .p12 made with ZXPSignCmd -selfSignedCert, as one line of base64
+      #   SPOTTER_P12_PASSWORD its password
+      - name: ZXP certificate
+        shell: bash
+        env:
+          P12_BASE64: ${{ secrets.SPOTTER_P12_BASE64 }}
+          P12_PASSWORD: ${{ secrets.SPOTTER_P12_PASSWORD }}
+        run: |
+          if [ -z "$P12_BASE64" ]; then echo "No SPOTTER_P12_BASE64 secret: using a fresh self-signed certificate."; exit 0; fi
+          p12="$RUNNER_TEMP/spotter.p12"
+          echo "$P12_BASE64" | base64 -d > "$p12"
+          echo "SPOTTER_P12=$p12" >> "$GITHUB_ENV"
+          echo "SPOTTER_P12_PASSWORD=$P12_PASSWORD" >> "$GITHUB_ENV"
+
+      - run: node installer/build.mjs
+
+      - name: Remove the certificate
+        if: always()
+        shell: bash
+        run: rm -f "$RUNNER_TEMP/spotter.p12"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact }}
+          path: ${{ matrix.files }}
+          if-no-files-found: error
+
+  publish:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+      - name: Checksums
+        run: cd dist && sha256sum * > SHA256SUMS.txt
+      - uses: softprops/action-gh-release@v2
+        with:
+          # A tag with a hyphen (v1.1.0-beta.1) is published as a pre-release.
+          prerelease: ${{ contains(github.ref_name, '-') }}
+          generate_release_notes: true
+          body: |
+            Free Premiere Pro panel for browsing your music and sound-effect folders.
+
+            **Install:** close Premiere Pro, run the installer for your computer, then open Window › Extensions › Spotter by Narrative Node.
+
+            - `Spotter-Setup-*.exe`: Windows 10 and 11 (64-bit). If Windows shows "Windows protected your PC", choose More info › Run anyway.
+            - `Spotter-*.pkg`: macOS, Intel and Apple silicon. If macOS can't verify it, right-click the file and choose Open.
+            - `Spotter-*.zxp`: for ZXP installers such as ZXPInstaller or Anastasiy's Extension Manager.
+
+            Checksums are in `SHA256SUMS.txt`.
+          files: dist/*

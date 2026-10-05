@@ -126,7 +126,7 @@
       // ?state=update shows a newer version; ?state=notice shows a promo notice.
       const notices = [{ id: "navigator", text: "Browse and scrub your video footage inside Premiere Pro.", label: "Try Navigator", url: "https://www.narrativenode.app/navigator" }];
       if (start === "update") return { latest: "1.1.0", notes: "Card size slider and a faster player", url: "https://www.narrativenode.app/spotter", notices };
-      if (start === "notice") return { latest: "1.0.1", notices };
+      if (start === "notice") return { latest: "1.0.2", notices };
       return null;
     },
     async decode(file, count) {
