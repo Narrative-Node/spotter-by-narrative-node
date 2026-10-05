@@ -3,10 +3,10 @@
 <ExtensionManifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    Version="11.0"
                    ExtensionBundleId="com.narrativenode.spotter"
-                   ExtensionBundleVersion="1.0.3"
+                   ExtensionBundleVersion="1.0.4"
                    ExtensionBundleName="Spotter by Narrative Node">
   <ExtensionList>
-    <Extension Id="com.narrativenode.spotter.panel" Version="1.0.3" />
+    <Extension Id="com.narrativenode.spotter.panel" Version="1.0.4" />
   </ExtensionList>
 
   <ExecutionEnvironment>

@@ -37,7 +37,7 @@ Spotter is the asset-link part of Navigator, given away: the same folder model (
 - Click to listen; double-click to import; drag onto the timeline or Project panel; insert at the playhead.
 - Imports land in bins that mirror the folders: Music ▸ subfolders, Assets ▸ SFX ▸ subfolders (Navigator's convention).
 - Formats: what Premiere imports and the panel's Chromium can play. AIFF imports but may not preview.
-- Promotion of Navigator: one button at the foot of the sidebar ("Try Navigator", "For Video Footage", a "50% OFF" bubble) opening narrativenode.app/navigator. Set by the user on 2026-10-05; nothing else in the panel promotes it.
+- Promotion of Navigator: one button at the foot of the sidebar ("Try Navigator", "For Video Footage", a "50% OFF" bubble) opening narrativenode.app/from-spotter, the page that gives the SPOTTER50OFF code. Set by the user on 2026-10-05; nothing else in the panel promotes it.
 - Card size: one slider after the folder name scales cards, cards with waveforms and list rows alike.
 - Licence: GPL-3.0. Lives in `spotter/` of the Navigator repository, self-contained, to be published as its own public repository.
 - Undecided: the minimum Premiere version and whether Premiere 27 still loads CEP extensions; to be confirmed on real installs.

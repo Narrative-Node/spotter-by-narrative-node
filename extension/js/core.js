@@ -117,7 +117,7 @@
   }
 
   /** This build's version; the update check compares releases against it. Keep it equal to the manifest's. */
-  const VERSION = "1.0.3";
+  const VERSION = "1.0.4";
 
   /**
    * Narrative Node's public updates repository: spotter.json says which version is newest and

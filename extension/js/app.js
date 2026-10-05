@@ -892,7 +892,7 @@
 
   el.promo.addEventListener("click", (e) => {
     e.preventDefault();
-    const url = el.promo.getAttribute("data-href") || el.promo.href || "https://www.narrativenode.app/navigator";
+    const url = el.promo.getAttribute("data-href") || el.promo.href || "https://www.narrativenode.app/from-spotter";
     env.openUrl(url);
   });
 
